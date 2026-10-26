@@ -26,9 +26,9 @@
     "build-a-submission-form": true,
     "build-a-data-sanitizer": true,
     "build-a-weather-service-api": true,
-    "build-a-bank-api": false,
+    "build-a-bank-api": true,
     "build-a-resource-monitor": true,
-    "build-a-chat-app": true,
+    "build-a-chat-app": false,
     "build-jwt-protected-routes": true
   },
   "chat.disableAIFeatures": true,
@@ -42,7 +42,7 @@
       "open": true,
       "showLoader": true,
       "timeout": 4000,
-      "url": "https://lifeless-bat-jjvxjxg755vwhwjr-8080.app.github.dev"
+      "url": "https://gloomy-graveyard-x57j5j4vjjjp3v9qg-8080.app.github.dev"
     }
   ],
   "terminal.integrated.defaultProfile.linux": "bash",
