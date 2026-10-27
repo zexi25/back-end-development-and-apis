@@ -2,13 +2,14 @@ import path from "path";
 import fs from "fs";
 
 const DB_PATH = path.join(import.meta.dirname, "../data/users.json");
+
 function writeUsers(users) {
-    fs.writeFileSync(DB_PATH, JSON.stringify(users, null, 2));
+    fs.writeFileSync(DB_PATH, JSON.stringify(users, null, 2), 'utf-8');
 }
 
 function readUsers(){
-    const data = JSON.parse(fs.readFileSync(DB_PATH));
-    return data
+    const data = fs.readFileSync(DB_PATH, 'utf-8');
+    return JSON.parse(data || "[]")
 }
 
 function findByEmail(email) {
