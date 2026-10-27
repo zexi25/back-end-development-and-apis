@@ -28,8 +28,8 @@
     "build-a-weather-service-api": true,
     "build-a-bank-api": true,
     "build-a-resource-monitor": true,
-    "build-a-chat-app": false,
-    "build-jwt-protected-routes": true
+    "build-a-chat-app": true,
+    "build-jwt-protected-routes": false
   },
   "chat.disableAIFeatures": true,
   "files.autoSave": "off",
@@ -42,7 +42,7 @@
       "open": true,
       "showLoader": true,
       "timeout": 4000,
-      "url": "https://gloomy-graveyard-x57j5j4vjjjp3v9qg-8080.app.github.dev"
+      "url": "https://noxious-incantation-97rp7px59qww29xrg-8080.app.github.dev"
     }
   ],
   "terminal.integrated.defaultProfile.linux": "bash",
