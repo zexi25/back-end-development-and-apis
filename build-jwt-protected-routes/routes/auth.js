@@ -1,6 +1,6 @@
 import express from "express";
 import bcrypt from "bcryptjs";
-import randomUUID from "crypto";
+import {randomUUID} from "crypto";
 import {signToken} from "../utils/jwt.js";
 import {findByEmail, readUsers, writeUsers} from "../utils/db.js"
 import authenticate from "../middleware/authenticate.js";
@@ -31,10 +31,12 @@ router.post('/register', async (req, res)=>{
         passwordHash: passwordHash,
         role: "user"
     }
-    writeUsers(readUsers().push(user))
+    const users = readUsers();
+users.push(user);
+writeUsers(users);
 
-    const token = signToken({id:user.id, email:user.email, role})
-    return res.status(201).json("successfully registered", token)
+    const token = signToken({id:user.id, email:user.email, role: user.role})
+    return res.status(201).json({message: "successfully registered", token})
 })
 
 router.post('/login', async (req, res)=>{
@@ -42,16 +44,16 @@ router.post('/login', async (req, res)=>{
     if (!email || !password) {
         return res.status(400).json("Email and password are required")
     }
-
+    const user = findByEmail(email)
     if (!findByEmail(email)) {
         return res.status(401).json({error: "Invalid credentials"})
     }
 
     const match = await bcrypt.compare(password, user.passwordHash);
     if (!match) {
-        res.status(401).json({error: "Invalid credentials"})
+        return res.status(401).json({error: "Invalid credentials"})
     } else {
-        const token = signToken({id:user.id, email:user.email, role});
+        const token = signToken({id:user.id, email:user.email, role: user.role});
         return res.json({message: "welcome back", token})
     }
 })

@@ -6,7 +6,7 @@ import {readUsers } from "../utils/db.js";
 const router = express.Router();
 
 router.get('/users', authenticate, authorizeRole('admin'), (req, res)=>{
-    return res.json(readUsers().map(({passwordHash, ...rest})=>rest))
+    return res.json({users: readUsers().map(({passwordHash, ...rest})=>rest)})
 })
 
 export default router;
